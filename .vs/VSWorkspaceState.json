@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\common-ui",
+    "\\src\\app\\components\\common-ui\\date-now",
+    "\\src\\app\\components\\layouts",
+    "\\src\\app\\components\\layouts\\header",
+    "\\src\\app\\components\\pages",
+    "\\src\\app\\components\\pages\\main"
+  ],
+  "SelectedNode": "\\src\\app\\components\\pages\\main\\main.component.html",
+  "PreviewInSolutionExplorer": false
+}

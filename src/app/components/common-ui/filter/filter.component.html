@@ -1,0 +1,6 @@
+<form [formGroup]="filterForm">
+    <select formControlName="name" (change)="applyFilter()">
+      <option value="">Все продукты</option>
+      <option *ngFor="let item of originalData">{{ item.name }}</option>
+    </select>
+</form>

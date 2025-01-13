@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(reset.scss);
+
+:root {
+  --active_blue: #16A4E3;
+  --icon_color: #B0B0B0;
+  --text-primary: #242424;
+  --text_secondary: #7E7E7E;
+  --text_text: #5E5E5E;
+  --selected_light: #FFF;
+  --border_divider: #00000004;
+  --divider: #E0E0E0;
+  --bg_grayDark: #F1F2F4;
+}
+
+
+body {
+  margin: 0 40px;
+}
+
+html {
+  background-color: var(--bg_grayDark);
+  border-top: solid var(--active_blue) 4px
+}
+
+* {
+    font-family: 'Inter';
+    
+    &.title {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 28px;
+    }
+    &.subtitle {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 28px;
+    }
+    &.nav {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+    }
+}
+
+.active {
+    color: var(--active_blue);
+    & svg {
+        fill: var(--active_blue)
+    }
+}

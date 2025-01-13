@@ -1,0 +1,31 @@
+<div class="task-card">
+  <div class="task-header">
+    <span class="task-id">{{ task.id }}</span>
+    <span class="task-status">
+      <img [src]="getIconUrl(task.status)" alt="Иконка статуса">
+    </span>
+  </div>
+  <div class="task-body">
+    <div class="task-progress">
+      <div class="progress-bar" [style.width]="task.progress + '%'">
+        <div *ngFor="let stage of task.stages" class="stage" [style.background-color]="stage.color">
+          {{ stage.name }}
+        </div>
+      </div>
+    </div>
+    <div class="task-path">
+      <span class="project">
+        <img [src]="getProjectIcon(task.project)" alt="Иконка проекта">
+      </span>
+      <span class="product">{{ task.product }}</span>
+    </div>
+    <div class="task-type">
+      <span class="type">
+        <img [src]="getTypeIcon(task.type)" alt="Иконка типа">
+      </span>
+      <span class="error-type">
+        <img [src]="getErrorTypeIcon(task.errorType)" alt="Иконка ошибки">
+      </span>
+    </div>
+  </div>
+</div>

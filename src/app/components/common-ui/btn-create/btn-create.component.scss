@@ -1,0 +1,16 @@
+button {
+    display: flex;
+    align-items: center;
+    border: var(--active_blue) solid 1px;
+    border-radius: 4px;
+    padding: 6.5px 12px;
+    
+    gap: 4px;
+    & p {
+        display: inline;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        color: var(--active_blue);
+    }
+}
