@@ -1,3 +1,8 @@
-<div *ngFor="let task of tasks">
-    <app-task-card [task]='task'></app-task-card>
+<div class="dropdown-list">
+  <button class="dropdown-button" (click)="toggleDropdown()">Задачи</button>
+  <ul class="dropdown-list-items" *ngIf="isDropdownOpen">
+    <li class="task-list">
+      <app-task-card></app-task-card>
+    </li>
+  </ul>
 </div>

@@ -1,41 +1,43 @@
-import { Injectable } from '@angular/core';
-
-interface SvgIcon {
-  name: string;
-  url: string;
-}
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Injectable, NgModule } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SvgIconsService {
-  private icons: { [name: string]: SvgIcon } = {};
+  private icons: { [name: string] : string } = {};
 
-  constructor() {
-    this.loadIcons();
-  }
+  constructor(private http: HttpClient) { }
 
-  private loadIcons(): void {
-    this.icons = {
-      'status-agreement': { name: 'agreement', url: '/src/assets/ic_StatusTask_16.svg' },
-      'in_progress': { name: 'in_progress', url: 'assets/icons/in_progress.svg' },
-      'done': { name: 'done', url: 'assets/icons/done.svg' },
-      'project1': { name: 'project1', url: 'assets/icons/project1.svg' },
-      'project2': { name: 'project2', url: 'assets/icons/project2.svg' },
-      'type1': { name: 'type1', url: 'assets/icons/type1.svg' },
-      'type2': { name: 'type2', url: 'assets/icons/type2.svg' },
-      'error1': { name: 'error1', url: 'assets/icons/error1.svg' },
-      'error2': { name: 'error2', url: 'assets/icons/error2.svg' },
-    };
-  }
-
-  getIcon(name: string): SvgIcon | null {
-    return this.icons[name] || null;
-  }
-
-  getIconUrl(name: string): string | null {
-    const icon = this.getIcon(name);
-    return icon? icon.url : null;
+    // this.icons = {
+    //   'status-agreement': '/assets/ic_StatusTask_16.svg',
+    //   'status-execution': '/assets/ic_StatusTask_16-1.svg',
+    //   'status_review': '/assets/ic_StatusTask_16-2.svg',
+    //   'status_deploy': '/assets/ic_StatusTask_16-3.svg',
+    //   'status_testing': '/assets/ic_StatusTask_16-4.svg',
+    //   'status_closed': '/assets/ic_StatusTask_16-5.svg',
+    //   'type_ios': '/assets/Platform.svg',
+    //   'type_android': '/assets/Platform-1.svg',
+    //   'type_website': '/assets/Platform-2.svg',
+    //   'type_backend': '/assets/type.svg',
+    //   'type_webapp': '/assets/Platform-3.svg',
+    //   'type_custom': '/assets/ic_StatusTask_16-2.svg',
+    //   'error_block': '/assets/ic_bug_16/off.png',
+    //   'error_critical': '/assets/ic_bug_16/off-1.png',
+    //   'error_important': '/assets/ic_bug_16/off-2.png',
+    //   'error_minor': '/assets/ic_bug_16/off-3.png',
+    //   'error_trivial': '/assets/ic_bug_16/off-4.png',
+    //   'task_frontend': '/assets/icon_task/dev.png',
+    //   'task_backend': '/assets/icon_task/dev-back.png',
+    //   'task_test': '/assets/icon_task/qa.png',
+    //   'task_design': '/assets/icon_task/design.png',
+    //   'task_analytics': '/assets/icon_task/analiticks.png',
+    // };
+  getIconCode(name: string): Observable<string> {
+    const url = `assets/${name}.svg`;
+    console.log('name:' + name)
+    return this.http.get(url, { responseType: 'text' });
   }
 }

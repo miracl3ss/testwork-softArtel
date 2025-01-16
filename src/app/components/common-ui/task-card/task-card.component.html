@@ -1,31 +1,24 @@
-<div class="task-card">
+<div class="task-card" *ngFor="let task of tasks">
   <div class="task-header">
-    <span class="task-id">{{ task.id }}</span>
-    <span class="task-status">
-      <img [src]="getIconUrl(task.status)" alt="Иконка статуса">
-    </span>
+    
+    <span><img src="/assets/{{ task.project }}.png" alt="{{ task.project }}">{{ task.project }} / <svg [innerHTML]="svgCodes[task.id][task.product]"></svg> / {{ task.version }} / {{task.functionCorrect}} {{ task.function }}</span>
   </div>
   <div class="task-body">
-    <div class="task-progress">
-      <div class="progress-bar" [style.width]="task.progress + '%'">
-        <div *ngFor="let stage of task.stages" class="stage" [style.background-color]="stage.color">
-          {{ stage.name }}
-        </div>
-      </div>
-    </div>
-    <div class="task-path">
-      <span class="project">
-        <img [src]="getProjectIcon(task.project)" alt="Иконка проекта">
-      </span>
-      <span class="product">{{ task.product }}</span>
-    </div>
-    <div class="task-type">
-      <span class="type">
-        <img [src]="getTypeIcon(task.type)" alt="Иконка типа">
-      </span>
-      <span class="error-type">
-        <img [src]="getErrorTypeIcon(task.errorType)" alt="Иконка ошибки">
-      </span>
-    </div>
+    <div class="task-icon" [innerHTML]="svgCodes['icon']"></div>
+    <div class="task-executor-icon" [innerHTML]="svgCodes['executorIcon']"></div>
+    <div class="task-status" [innerHTML]="svgCodes['status']"></div>
   </div>
 </div>
+
+<!-- id: string;
+  status: string;
+  name: string;
+  executorIcon: string | null;
+  executorName: string;
+  stages: { name: string; progress: string }[];
+  project: string;
+  product: string;
+  icon: string;
+  timeRequested: number | null;
+  timeInWork: number | null;
+  paused: boolean; -->

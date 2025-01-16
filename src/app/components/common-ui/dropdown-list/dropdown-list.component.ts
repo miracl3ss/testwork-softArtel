@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
-import { TaskCardComponent } from "../task-card/task-card.component";
-import { NgFor } from '@angular/common';
-import { tasks } from '../../../services/task-data.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { taskDataService } from '../../../services/task-data.service';
+import { TaskCardComponent } from '../task-card/task-card.component';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dropdown-list',
-  imports: [TaskCardComponent, NgFor],
   templateUrl: './dropdown-list.component.html',
-  styleUrl: './dropdown-list.component.scss'
+  styleUrls: ['./dropdown-list.component.scss'],
+  imports: [NgIf, NgFor, TaskCardComponent]
 })
-export class DropdownListComponent {
-  tasks = tasks;
+export class DropdownListComponent implements OnInit {
+  isDropdownOpen = false;
+  
+
+  constructor(private taskDataService: taskDataService) { }
+  tasks: any;
+  ngOnInit(): void {
+    this.tasks = this.taskDataService.tasks;
+    console.log('DropdownListComponent tasks:', this.taskDataService.tasks);
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen =!this.isDropdownOpen;
+  }
 }

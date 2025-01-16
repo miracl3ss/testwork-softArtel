@@ -1,61 +1,265 @@
 import { Injectable } from '@angular/core';
+import { IdGeneratorService } from './id-generator.service';
+import { getPersonIcon, Persons } from './person-data.service';
 
 export interface Task {
   id: string;
   status: string;
-  progress: number;
-  stages: { name: string; color: string }[];
+  name: string;
+  executorIcon: string | null;
+  executorName: string;
+  stages: { name: string; progress: string }[];
   project: string;
   product: string;
-  type: string;
-  errorType: string;
+  icon: string;
+  timeRequested: number | null;
+  timeInWork: number | null;
+  paused: boolean;
+  inWork: boolean;
+  functionCorrect: boolean,
+  function: string,
+  version: string
 }
 
-Injectable({
+@Injectable({
   providedIn: 'root'
 })
 
-export const tasks: Task[] = [
+export class taskDataService {
+private IdGenerator = new IdGeneratorService();
+
+public tasks: Task[] = [
   {
-    id: 'TR-321',
-    status: 'status-agreement',
-    progress: 0,
+    id: this.IdGenerator.generateId('task'),
+    status: 'execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
     stages: [
-      { name: 'Stage 1', color:'red' },
-      { name: 'Stage 2', color: 'green' },
-      { name: 'Stage 3', color: 'blue' }
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
     ],
-    project: 'project1',
-    product: 'Product 1',
-    type: 'type1',
-    errorType: 'error1'
+    project: 'Simplanum',
+    product: 'ios',
+    icon: 'frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: true,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
   },
   {
-    id: 'task-2',
-    status: 'in_progress',
-    progress: 50,
+    id: this.IdGenerator.generateId('task'),
+    status: 'agreement',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
     stages: [
-      { name: 'Stage 1', color:'red' },
-      { name: 'Stage 2', color: 'green' },
-      { name: 'Stage 3', color: 'blue' }
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
     ],
-    project: 'project2',
-    product: 'Product 2',
-    type: 'type2',
-    errorType: 'error2'
+    project: 'Simplanum',
+    product: 'android',
+    icon: 'backend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
   },
   {
-    id: 'task-3',
-    status: 'done',
-    progress: 100,
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
     stages: [
-      { name: 'Stage 1', color:'red' },
-      { name: 'Stage 2', color: 'green' },
-      { name: 'Stage 3', color: 'blue' }
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
     ],
-    project: 'project1',
-    product: 'Product 3',
-    type: 'type1',
-    errorType: 'error1'
-  }
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Вильгельмина Ш.'),
+    executorName: 'Вильгельмина Ш.',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
 ];
+}
