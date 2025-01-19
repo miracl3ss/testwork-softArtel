@@ -20,11 +20,12 @@ export const Persons: Person[] = [
     name: 'Вильгельмина Ш.',
     age: 20,
     email: '',
-    icon: ''
+    icon: 'Vilgelmina.png'
   }
 ];
 
 export function getPersonIcon(name: string): string | null {
   const person = Persons.find(p => p.name === name);
-  return person ? person.icon : null;
+  const IconPath = '/assets/ExecutorIcons/' + person?.icon
+  return IconPath;
 }

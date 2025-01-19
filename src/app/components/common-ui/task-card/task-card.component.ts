@@ -3,10 +3,10 @@ import { SvgIconsService } from '../../../services/svg-icons.service';
 import { firstValueFrom, map, catchError } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Task, taskDataService } from '../../../services/task-data.service';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
-  imports: [NgIf, NgFor],
+  imports: [NgFor],
   selector: 'app-task-card',
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.scss']
@@ -57,7 +57,7 @@ export class TaskCardComponent implements OnInit, OnChanges {
           return {};
         }
 
-        const iconNames = [task.product, task.executorIcon, task.icon, task.status];
+        const iconNames = [task.product, task.executorIcon, task.status];
         this.product = task.product;
         const svgCodeArray = await Promise.all(
           iconNames.map(async (name: any) => {

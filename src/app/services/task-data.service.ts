@@ -55,7 +55,7 @@ public tasks: Task[] = [
   {
     id: this.IdGenerator.generateId('task'),
     status: 'agreement',
-    name: 'Разработка нового компонента для отображения графиков',
+    name: 'Рефакторинг кода модуля авторизации',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
     stages: [
@@ -69,7 +69,7 @@ public tasks: Task[] = [
     project: 'Simplanum',
     product: 'android',
     icon: 'backend',
-    timeRequested: 5,
+    timeRequested: 2,
     timeInWork: 0,
     paused: false,
     inWork: false,
@@ -79,8 +79,8 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
-    name: 'Разработка нового компонента для отображения графиков',
+    status: 'agreement',
+    name: 'Устранить проблемы с кроссбраузерной совместимостью',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
     stages: [
@@ -90,9 +90,9 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
-    timeRequested: 5,
+    product: 'webapp',
+    icon: 'err_important',
+    timeRequested: null,
     timeInWork: 0,
     paused: false,
     inWork: false,
@@ -102,8 +102,8 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
-    name: 'Разработка нового компонента для отображения графиков',
+    status: 'execution',
+    name: 'Ошибка валидации формы при пустом поле "номер телефона"',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
     stages: [
@@ -113,11 +113,11 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
-    timeRequested: 5,
+    product: 'website',
+    icon: 'err_important',
+    timeRequested: null,
     timeInWork: 0,
-    paused: false,
+    paused: false,  
     inWork: false,
     functionCorrect: true,
     function: 'Вопрос по процедуре',
@@ -125,8 +125,8 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
-    name: 'Разработка нового компонента для отображения графиков',
+    status: 'execution',
+    name: 'Неверное поведение компонента "Главный экран" при изменении размера окна',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
     stages: [
@@ -136,8 +136,8 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
+    product: 'webapp',
+    icon: 'err_important',
     timeRequested: 5,
     timeInWork: 0,
     paused: false,
