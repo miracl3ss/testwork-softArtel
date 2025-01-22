@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    gap: 20px;
+    border-bottom: solid 1px var(--divider);
+}
+.nav {
+    padding: 7.5px 8px;
+    color: var(--text-text);
+    &.active {
+        border-bottom: solid 1px var(--active_blue);
+        color: var(--active_blue)
+    }
+}

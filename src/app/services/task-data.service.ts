@@ -94,7 +94,7 @@ public tasks: Task[] = [
     icon: 'err_important',
     timeRequested: null,
     timeInWork: 0,
-    paused: false,
+    paused: true,
     inWork: false,
     functionCorrect: true,
     function: 'Вопрос по процедуре',
@@ -117,7 +117,7 @@ public tasks: Task[] = [
     icon: 'err_important',
     timeRequested: null,
     timeInWork: 0,
-    paused: false,  
+    paused: true,  
     inWork: false,
     functionCorrect: true,
     function: 'Вопрос по процедуре',
@@ -150,8 +150,54 @@ public tasks: Task[] = [
     id: this.IdGenerator.generateId('task'),
     status: 'status-execution',
     name: 'Разработка нового компонента для отображения графиков',
-    executorIcon: getPersonIcon('Вильгельмина Ш.'),
-    executorName: 'Вильгельмина Ш.',
+    executorIcon: getPersonIcon('Любой сотрудник'),
+    executorName: 'Любой сотрудник',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Любой сотрудник'),
+    executorName: 'Любой сотрудник',
+    stages: [
+      { name: 'Stage 1', progress: 'inWork' },
+      { name: 'Stage 2', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' },
+      { name: 'Stage 3', progress: 'notReached' }
+    ],
+    project: 'Simplanum',
+    product: 'iOS',
+    icon: 'Frontend',
+    timeRequested: 5,
+    timeInWork: 0,
+    paused: false,
+    inWork: false,
+    functionCorrect: true,
+    function: 'Вопрос по процедуре',
+    version: '1.12'
+  },
+  {
+    id: this.IdGenerator.generateId('task'),
+    status: 'status-execution',
+    name: 'Разработка нового компонента для отображения графиков',
+    executorIcon: getPersonIcon('Любой сотрудник'),
+    executorName: 'Любой сотрудник',
     stages: [
       { name: 'Stage 1', progress: 'inWork' },
       { name: 'Stage 2', progress: 'notReached' },
@@ -197,53 +243,7 @@ public tasks: Task[] = [
     status: 'status-execution',
     name: 'Разработка нового компонента для отображения графиков',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
-    executorName: 'Вильгельмина Ш.',
-    stages: [
-      { name: 'Stage 1', progress: 'inWork' },
-      { name: 'Stage 2', progress: 'notReached' },
-      { name: 'Stage 3', progress: 'notReached' },
-      { name: 'Stage 3', progress: 'notReached' }
-    ],
-    project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
-    timeRequested: 5,
-    timeInWork: 0,
-    paused: false,
-    inWork: false,
-    functionCorrect: true,
-    function: 'Вопрос по процедуре',
-    version: '1.12'
-  },
-  {
-    id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
-    name: 'Разработка нового компонента для отображения графиков',
-    executorIcon: getPersonIcon('Вильгельмина Ш.'),
-    executorName: 'Вильгельмина Ш.',
-    stages: [
-      { name: 'Stage 1', progress: 'inWork' },
-      { name: 'Stage 2', progress: 'notReached' },
-      { name: 'Stage 3', progress: 'notReached' },
-      { name: 'Stage 3', progress: 'notReached' }
-    ],
-    project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
-    timeRequested: 5,
-    timeInWork: 0,
-    paused: false,
-    inWork: false,
-    functionCorrect: true,
-    function: 'Вопрос по процедуре',
-    version: '1.12'
-  },
-  {
-    id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
-    name: 'Разработка нового компонента для отображения графиков',
-    executorIcon: getPersonIcon('Вильгельмина Ш.'),
-    executorName: 'Вильгельмина Ш.',
+    executorName: '',
     stages: [
       { name: 'Stage 1', progress: 'inWork' },
       { name: 'Stage 2', progress: 'notReached' },
@@ -262,4 +262,20 @@ public tasks: Task[] = [
     version: '1.12'
   },
 ];
+
+statuses = [
+  {name: 'На согласовании', status: 'agreement', routerLink: '/main/toBeAgreed'},
+  {name: 'На ревью', status: 'review', routerLink: '/main/onReview'},
+  {name: 'Для работы', status: 'execution', routerLink: '/main/forWork'},
+  {name: 'Черновики', status: 'draft', routerLink: '/main/drafts'}
+]
+
+
+getTasks(): any[] {
+  return this.tasks;
+}
+getFilteredTasks(status: string) {
+  const filteredTasks = this.tasks.filter(task => task.status === status);
+  return filteredTasks
+}
 }

@@ -2,9 +2,9 @@
   <div class="task-header">
     <span>
       <img src="/assets/{{ task.project }}.png" alt="{{ task.project }}">
-      {{ task.project }} / 
-      <svg [innerHTML]="svgCodes[task.id][task.product]"></svg> / 
-      {{ task.version }} / 
+      {{ task.project }} /
+      <svg [innerHTML]="svgCodes[task.id]['product']"></svg> /
+      {{ task.version }} /
       {{ task.functionCorrect }} {{ task.function }}
     </span>
   </div>
@@ -14,8 +14,17 @@
     <span class="task-id">{{ task.id}} </span>
   </div>
   <div class="task-footer">
-    <svg [innerHTML]="svgCodes[task.id][task.status]"></svg>
-    <img src="{{ task.executorIcon }}" alt="Executor Icon" id="{{task.id}}">
-    <label for="{{task.id}}">{{task.executorName}}</label>
+    <div *ngFor="let stage of task.stages" class="task-stages">
+      <hr class="{{stage.progress}}">
+    </div>
+    <div class="task-executor">
+      <svg [ngClass]="{'active': task.inWork === true}" [innerHTML]="svgCodes[task.id]['status']"></svg>
+      <img src="{{ task.executorIcon }}" alt="Executor Icon" id="{{task.id}}">
+      <label for="{{task.id}}">{{task.executorName}}</label>
+    </div>
+    <div class="task-time">
+      <img src="/assets/clock.png" alt="time">
+      <p>{{ task.timeInWork }} / {{ task. timeRequested }}</p>
+    </div>
   </div>
 </div>

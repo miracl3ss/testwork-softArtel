@@ -1,0 +1,3 @@
+<a class="nav" *ngFor="let status of statuses" [routerLink]="status.routerLink" routerLinkActive="active" (click)="filterTasks(status.status)">
+    <p>{{ status.name }}: {{ getTaskCount(status.status) }}</p>
+  </a>

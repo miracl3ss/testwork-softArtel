@@ -1,8 +1,7 @@
-svg {
-    fill: var(--active_blue);
-    color: #000;
-    stroke: var(--active_blue);
-    overflow: visible;
-    width: 16px;
-    height: 16px;
+.task-header svg, .task-executor svg {
+    fill: var(--text-secondary)
+}
+
+svg.active ~ svg {
+    fill: var(--active_blue)
 }

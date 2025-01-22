@@ -2,16 +2,38 @@
 
 :root {
   --active_blue: #16A4E3;
-  --icon_color: #B0B0B0;
-  --text-primary: #242424;
-  --text_secondary: #7E7E7E;
-  --text_text: #5E5E5E;
-  --selected_light: #FFF;
-  --border_divider: #00000004;
-  --divider: #E0E0E0;
-  --bg_grayDark: #F1F2F4;
-}
+  --green: #1BBA69;
+  --red: #CE0000;
+  --orange: #FF9000;
+  --while: #fff;
 
+  --bg_grayDark: #F1F2F4;
+  --bg_blocks: #F9FAFC;
+  --bg_fields: #F5F6F8;
+  --bg_menu: #FFFFFF;
+  --bg_light: #FFFFFF;
+  --bg_blue: #EFFAFF;
+  --bg_border: #F9FAFC;
+  --divider: #E0E0E0;
+
+  --text-primary: #242424;
+  --text-text: #5E5E5E;
+  --text-secondary: #7E7E7E;
+  --text-service: #B0B0B0;
+  --Link: #005BD1;
+  --Link-visited: #528FDF;
+
+  --bug_blocked: #FF0000;
+  --bug_critical: #A90C26;
+  --bug_major: #ED4E4E;
+  --bug_minor: #FF7002;
+  --bug_trivial: #B0B0B0;
+
+  --gray20: #EFEFEF;
+
+  
+}
+$new_shdw_card: 0 3px 10px 0 rgba(38, 58, 91, 0.05);
 
 body {
   margin: 0 40px;
@@ -20,6 +42,11 @@ body {
 html {
   background-color: var(--bg_grayDark);
   border-top: solid var(--active_blue) 4px
+}
+
+svg {
+  width: 16px;
+  height: 16px;
 }
 
 * {
@@ -31,7 +58,7 @@ html {
         line-height: 28px;
     }
     &.subtitle {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 20px;
       line-height: 28px;
     }
@@ -39,6 +66,16 @@ html {
         font-weight: 400;
         font-size: 14px;
         line-height: 21px;
+    }
+    &.note-medium {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+    }
+    &.note {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
     }
 }
 

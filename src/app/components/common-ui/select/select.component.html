@@ -1,0 +1,13 @@
+
+<div class="custom-select" [ngClass]="{'active': title !== label.name}">
+    <div class="select-title active" [ngClass]="{'active': title !== label.name}">{{title}}</div>
+    <div class="select-label" [ngClass]="{'active': title == label.name}"><img src="{{label.icon}}"><p>{{ label.name }}</p></div>
+    <div class="select-options" [class.active]="isOpen">
+      <ul>
+        <li *ngFor="let option of options" (click)="selectOption(option)" class="note-medium">
+          <img src="{{option.icon}}"><p>{{ option.name }}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="select-arrow" (click)="toggleOpen()"><img src="/assets/chevron.down.min.svg" alt=""></div>
+  </div>

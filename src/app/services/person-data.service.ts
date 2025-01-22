@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IdGeneratorService } from './id-generator.service';
-import { generate } from 'rxjs';
 
 Injectable({
   providedIn: 'root'
@@ -15,6 +14,13 @@ export interface Person {
 }
 
 export const Persons: Person[] = [
+  {
+    id: new IdGeneratorService().generateId('person'),
+    name: 'Любой сотрудник',
+    age: 0,
+    email: '',
+    icon: 'Default.png'
+  },
   {
     id: new IdGeneratorService().generateId('person'),
     name: 'Вильгельмина Ш.',

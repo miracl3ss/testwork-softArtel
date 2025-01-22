@@ -1,10 +1,17 @@
 <app-date-now></app-date-now>
-<div>
-    <app-filter>
-
-    </app-filter>
-    <app-filter>
-
-    </app-filter>
-    <app-dropdown-list></app-dropdown-list>
+<div class="filters">
+    <app-filter [title]="'Все продукты'" [option]="products"></app-filter>
+    <app-filter [title]="'Все задачи'" [option]="tasksType"></app-filter>
+</div>
+<div class="task-dropdown-container">
+    <div class="left-column">
+        <app-nav-sub-pages class="nav"></app-nav-sub-pages>
+        <app-dropdown-list class="myTasks" [task]="myTasks" [name]="'Мои:'"></app-dropdown-list>
+        <app-dropdown-list class="unassignedTasks" [task]="unassignedTasks"
+            [name]="'Неназначенные:'"></app-dropdown-list>
+    </div>
+    <div class="right-column">
+        <app-task-card-inwork class="taskInWork" [tasks]="taskInWork"></app-task-card-inwork>
+        <app-dropdown-list class="pausedTasks" [task]="pausedTasks" [name]="'На паузе:'"></app-dropdown-list>
+    </div>
 </div>

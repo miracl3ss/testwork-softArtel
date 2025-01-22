@@ -1,0 +1,22 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    gap: 12px
+}
+
+.task-dropdown-container {
+    display: flex;
+    gap: 32px
+}
+
+.left-column,
+.right-column {
+    flex: 1;
+    overflow-y: auto;
+}

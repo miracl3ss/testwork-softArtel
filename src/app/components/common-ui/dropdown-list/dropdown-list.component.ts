@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { taskDataService } from '../../../services/task-data.service';
+import { Task, taskDataService } from '../../../services/task-data.service';
 import { TaskCardComponent } from '../task-card/task-card.component';
 import { NgIf } from '@angular/common';
 
@@ -10,14 +10,15 @@ import { NgIf } from '@angular/common';
   imports: [NgIf, TaskCardComponent]
 })
 export class DropdownListComponent implements OnInit {
+  @Input({required: true}) task!: Task[];
+  @Input() name: string = ''
   isDropdownOpen = false;
   
 
   constructor(private taskDataService: taskDataService) { }
   tasks: any;
   ngOnInit(): void {
-    this.tasks = this.taskDataService.tasks;
-    console.log('DropdownListComponent tasks:', this.taskDataService.tasks);
+    this.tasks = this.task;
   }
 
   toggleDropdown(): void {
