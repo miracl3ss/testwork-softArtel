@@ -7,12 +7,13 @@ import { DataService } from '../../../services/data.service';
 import { NavSubPagesComponent } from "../../common-ui/nav-sub-pages/nav-sub-pages.component";
 import { PathService } from '../../../services/path.service';
 import { TaskCardInworkComponent } from "../../common-ui/task-card-inwork/task-card-inwork.component";
+import { TaskCardComponent } from "../../common-ui/task-card/task-card.component";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
-  imports: [DateNowComponent, FilterComponent, NavSubPagesComponent, DropdownListComponent, TaskCardInworkComponent]
+  imports: [DateNowComponent, FilterComponent, NavSubPagesComponent, DropdownListComponent, TaskCardInworkComponent, TaskCardComponent]
 })
 export class MainComponent implements OnInit, OnChanges {
     myTasks: any[] = [];
@@ -37,14 +38,12 @@ export class MainComponent implements OnInit, OnChanges {
       
       this.pathService.updatePath();
       this.path = this.pathService.getPath()
-      console.log(this.path);
       this.filterTask(this.path);
       }
     
     ngOnChanges(changes: any) {
       if (changes.path) {
       this.path = this.pathService.getPath();
-      console.log(this.path);
       this.filterTask(this.path)
       }
     }
@@ -67,14 +66,11 @@ export class MainComponent implements OnInit, OnChanges {
         case '/main/drafts':
           status = 'draft'
       }
-      console.log('статус:' + status, 'path' + this.path)
       const tasks = this.taskDataService.getFilteredTasks(status);
-      console.log(this.taskDataService.getFilteredTasks(status));
       const task = this.taskDataService.getTasks();
       this.taskInWork = task.filter(task => task.inWork === true);
       this.myTasks = tasks.filter(task => task.executorName === 'Вильгельмина Ш.' && task.paused === false);
       this.pausedTasks = tasks.filter(task => task.paused === true);
       this.unassignedTasks = tasks.filter(task => task.executorName === 'Любой сотрудник')
-      console.log(this.taskInWork)
     }
 }

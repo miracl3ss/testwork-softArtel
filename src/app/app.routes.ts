@@ -7,19 +7,16 @@ import { IterationsPageComponent } from './components/pages/iterations-page/iter
 import { HeaderComponent } from './components/layouts/header/header.component';
 import { SimplanumProjectPageComponent } from './components/pages/simplanum-project-page/simplanum-project-page.component';
 import { RocketProjectPageComponent } from './components/pages/rocket-project-page/rocket-project-page.component';
-import { DraftsSubComponent } from './components/pages/drafts-sub/drafts-sub.component';
-import { ForWorkSubComponent } from './components/pages/for-work-sub/for-work-sub.component';
-import { OnReviewSubComponent } from './components/pages/on-review-sub/on-review-sub.component';
-import { ToBeAgreedSubComponent } from './components/pages/to-be-agreed-sub/to-be-agreed-sub.component';
+import { CleanpageComponent } from './components/pages/cleanpage/cleanpage.component';
 
 export const routes: Routes = [
     {path: '', component: HeaderComponent, children: [
         {path: '', redirectTo: 'main', pathMatch: 'full'},
         {path: 'main', component: MainComponent, children: [
-            {path: 'toBeAgreed', component: ToBeAgreedSubComponent},
-            {path: 'onReview', component: OnReviewSubComponent},
-            {path: 'forWork', component: ForWorkSubComponent},
-            {path: 'drafts', component: DraftsSubComponent}
+            {path: 'toBeAgreed', component: CleanpageComponent},
+            {path: 'onReview', component: CleanpageComponent},
+            {path: 'forWork', component: CleanpageComponent},
+            {path: 'drafts', component: CleanpageComponent}
         ]},
         {path: 'projects', component: ProjectsPageComponent, children: [
             {path: 'simplanum', component: SimplanumProjectPageComponent},

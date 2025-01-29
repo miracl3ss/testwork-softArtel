@@ -32,14 +32,14 @@ public tasks: Task[] = [
   {
     id: this.IdGenerator.generateId('task'),
     status: 'execution',
-    name: 'Разработка нового компонента для отображения графиков',
+    name: 'Не отображается текст "Пока нет вопросов", если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
     stages: [
-      { name: 'Stage 1', progress: 'inWork' },
-      { name: 'Stage 2', progress: 'notReached' },
-      { name: 'Stage 3', progress: 'notReached' },
-      { name: 'Stage 3', progress: 'notReached' }
+      { name: 'Stage 1', progress: 'done' },
+      { name: 'Stage 2', progress: 'work' },
+      { name: 'Stage 3', progress: 'pause' },
+      { name: 'Stage 3', progress: 'wait' }
     ],
     project: 'Simplanum',
     product: 'ios',
@@ -102,7 +102,7 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'execution',
+    status: 'closed',
     name: 'Ошибка валидации формы при пустом поле "номер телефона"',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
@@ -125,7 +125,7 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'execution',
+    status: 'deploy',
     name: 'Неверное поведение компонента "Главный экран" при изменении размера окна',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
@@ -148,7 +148,7 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
+    status: 'review',
     name: 'Разработка нового компонента для отображения графиков',
     executorIcon: getPersonIcon('Любой сотрудник'),
     executorName: 'Любой сотрудник',
@@ -159,8 +159,8 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
+    product: 'ios',
+    icon: 'frontend',
     timeRequested: 5,
     timeInWork: 0,
     paused: false,
@@ -171,7 +171,7 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
+    status: 'execution',
     name: 'Разработка нового компонента для отображения графиков',
     executorIcon: getPersonIcon('Любой сотрудник'),
     executorName: 'Любой сотрудник',
@@ -182,8 +182,8 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
+    product: 'website',
+    icon: 'frontend',
     timeRequested: 5,
     timeInWork: 0,
     paused: false,
@@ -194,7 +194,7 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
+    status: 'execution',
     name: 'Разработка нового компонента для отображения графиков',
     executorIcon: getPersonIcon('Любой сотрудник'),
     executorName: 'Любой сотрудник',
@@ -205,8 +205,8 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
+    product: 'ios',
+    icon: 'frontend',
     timeRequested: 5,
     timeInWork: 0,
     paused: false,
@@ -217,7 +217,7 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
+    status: 'draft',
     name: 'Разработка нового компонента для отображения графиков',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
     executorName: 'Вильгельмина Ш.',
@@ -228,8 +228,8 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
+    product: 'backend',
+    icon: 'frontend',
     timeRequested: 5,
     timeInWork: 0,
     paused: false,
@@ -240,10 +240,10 @@ public tasks: Task[] = [
   },
   {
     id: this.IdGenerator.generateId('task'),
-    status: 'status-execution',
+    status: 'execution',
     name: 'Разработка нового компонента для отображения графиков',
     executorIcon: getPersonIcon('Вильгельмина Ш.'),
-    executorName: '',
+    executorName: 'Вильгельмина Ш.',
     stages: [
       { name: 'Stage 1', progress: 'inWork' },
       { name: 'Stage 2', progress: 'notReached' },
@@ -251,8 +251,8 @@ public tasks: Task[] = [
       { name: 'Stage 3', progress: 'notReached' }
     ],
     project: 'Simplanum',
-    product: 'iOS',
-    icon: 'Frontend',
+    product: 'backend',
+    icon: 'backend',
     timeRequested: 5,
     timeInWork: 0,
     paused: false,

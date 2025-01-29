@@ -1,30 +1,49 @@
-<div class="task-card" *ngFor="let task of tasks">
-  <div class="task-header">
-    <span>
+<div class="task-card" *ngFor="let task of tasks" appHoverDebounce [taskFooterElement]="taskFooterElement" [taskElement]="taskElement"
+[hiddenActionsElement]="hiddenActionsElement" [hiddenActionsInWorkElement]="hiddenActionsInWorkElement" [hiddenPathElement]="hiddenPathElement" [taskHeaderElement]="taskHeaderElement" [typeOfTask]="task.inWork" #task>
+  <div appHoverDebounce [taskFooterElement]="taskFooterElement" [taskElement]="taskElement"
+  [hiddenActionsElement]="hiddenActionsElement" [hiddenActionsInWorkElement]="hiddenActionsInWorkElement" [hiddenPathElement]="hiddenPathElement" [taskHeaderElement]="taskHeaderElement" [typeOfTask]="task.inWork" class="task-header task-path hide" #hiddenPath>
+    <span class="nav">
       <img src="/assets/{{ task.project }}.png" alt="{{ task.project }}">
       {{ task.project }} /
-      <svg [innerHTML]="svgCodes[task.id]['product']"></svg> /
+      <svg [innerHTML]="svgCodes[task.id]['product']"></svg> {{task.product}} /
       {{ task.version }} /
-      {{ task.functionCorrect }} {{ task.function }}
+      <img src="{{task.functionCorrect ? '/assets/Feature.png' : ''}}" alt="{{task.functionCorrect}}"> {{ task.function
+      }}
     </span>
   </div>
-  <div class="task-body">
-    <img src="/assets/{{ task.icon }}.png" alt="{{ task.icon }}">
-    <p class="title">{{task.name}}</p>
+  <div appHoverDebounce [typeOfTask]="task.inWork" [taskFooterElement]="taskFooterElement" [taskElement]="taskElement"
+  [hiddenActionsElement]="hiddenActionsElement" [hiddenActionsInWorkElement]="hiddenActionsInWorkElement" [hiddenPathElement]="hiddenPathElement" [taskHeaderElement]="taskHeaderElement" #taskHeader class="task-body" >
+    <img class="task-icon" src="/assets/{{ task.icon }}.png" alt="{{ task.icon }}">
+    <p class="nav">{{task.name}}</p>
     <span class="task-id">{{ task.id}} </span>
   </div>
-  <div class="task-footer">
-    <div *ngFor="let stage of task.stages" class="task-stages">
-      <hr class="{{stage.progress}}">
+  <div appHoverDebounce [typeOfTask]="task.inWork" [taskFooterElement]="taskFooterElement" [taskElement]="taskElement"
+  [hiddenActionsElement]="hiddenActionsElement" [hiddenActionsInWorkElement]="hiddenActionsInWorkElement" [hiddenPathElement]="hiddenPathElement" [taskHeaderElement]="taskHeaderElement" class="task-actions hide" #hiddenActions [ngClass]="{'none': task.inWork === true}">
+    <app-btn-task [action]="'fix'"></app-btn-task>
+    <app-btn-task [action]="'work'" style="flex-grow: 1.5"></app-btn-task>
+    <app-btn-task [action]="'accept'"></app-btn-task>
+  </div>
+  <div class="task-actions-inwork hide" appHoverDebounce [typeOfTask]="task.inWork" [taskFooterElement]="taskFooterElement" [taskElement]="taskElement"
+  [hiddenActionsElement]="hiddenActionsElement" [hiddenActionsInWorkElement]="hiddenActionsInWorkElement" [hiddenPathElement]="hiddenPathElement" [taskHeaderElement]="taskHeaderElement" #hiddenActionsInWork
+    [ngClass]="{'none': task.inWork === false}">
+    <app-btn-task [action]="'pause'"></app-btn-task>
+    <app-btn-task [action]="'done'"></app-btn-task>
+  </div>
+  <div appHoverDebounce [typeOfTask]="task.inWork" [taskFooterElement]="taskFooterElement" [taskElement]="taskElement"
+  [hiddenActionsElement]="hiddenActionsElement" [hiddenActionsInWorkElement]="hiddenActionsInWorkElement" [hiddenPathElement]="hiddenPathElement" [taskHeaderElement]="taskHeaderElement" #taskFooter class="task-footer">
+    <div class="task-stages">
+      <hr *ngFor="let stage of task.stages" class="{{stage.progress}}">
     </div>
     <div class="task-executor">
       <svg [ngClass]="{'active': task.inWork === true}" [innerHTML]="svgCodes[task.id]['status']"></svg>
-      <img src="{{ task.executorIcon }}" alt="Executor Icon" id="{{task.id}}">
-      <label for="{{task.id}}">{{task.executorName}}</label>
-    </div>
-    <div class="task-time">
-      <img src="/assets/clock.png" alt="time">
-      <p>{{ task.timeInWork }} / {{ task. timeRequested }}</p>
+      <label class="note" for="{{task.id}}"><img src="{{ task.executorIcon }}" alt="Executor Icon"
+          id="{{task.id}}">{{task.executorName}}</label>
+      <div>
+        <img src="/assets/clock.png" alt="time">
+        <p class="note">{{ task.timeInWork }}ч / {{ task. timeRequested }}ч</p>
+      </div>
+
     </div>
   </div>
-</div>
+
+</div >

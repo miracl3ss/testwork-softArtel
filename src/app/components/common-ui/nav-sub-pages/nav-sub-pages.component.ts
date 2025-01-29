@@ -23,11 +23,9 @@ export class NavSubPagesComponent implements OnInit {
   constructor(private dataService: taskDataService) { };
   onStatusChange(status: string): void {
     this.status = status;
-    console.log(this.status);
   }
   ngOnInit(): void {
     this.number = this.dataService.getTasks()
-    console.log(this.statuses)
   }
   getTaskCount(status: string): number {
     return this.number.filter(task => task.status === status).length;

@@ -5,8 +5,16 @@
   --green: #1BBA69;
   --red: #CE0000;
   --orange: #FF9000;
-  --while: #fff;
+  --white: #fff;
 
+  --active_blue_rgb: 22, 164, 227;
+  --green_rgb: 27, 186, 105;
+  --red_rgb: 206, 0, 0;
+  --orange_rgb: 255, 144, 0;
+  --white_rgb: 255, 255, 255;
+  --text-secondary_rgb: 126, 126, 126;
+
+  
   --bg_grayDark: #F1F2F4;
   --bg_blocks: #F9FAFC;
   --bg_fields: #F5F6F8;
@@ -76,6 +84,11 @@ svg {
       font-weight: 400;
       font-size: 13px;
       line-height: 18px;
+    }
+    &.h3 {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
     }
 }
 

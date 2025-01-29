@@ -12,6 +12,13 @@
     </div>
     <div class="right-column">
         <app-task-card-inwork class="taskInWork" [tasks]="taskInWork"></app-task-card-inwork>
-        <app-dropdown-list class="pausedTasks" [task]="pausedTasks" [name]="'На паузе:'"></app-dropdown-list>
+        <!-- <app-dropdown-list class="pausedTasks" [task]="pausedTasks" [name]="'На паузе:'"></app-dropdown-list> -->
+        
+        <ul class="paused">
+            <p>На паузе: {{pausedTasks.length}}</p>
+            <li>
+                <app-task-card #task [tasks]="pausedTasks"></app-task-card>
+            </li>
+        </ul>
     </div>
 </div>

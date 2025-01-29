@@ -1,8 +1,8 @@
 <div class="dropdown-list">
-  <button class="dropdown-button" (click)="toggleDropdown()">{{name}} {{task.length}}</button>
+  <button class="dropdown-button h3" (click)="toggleDropdown()"><img src="/assets/chevron.down.min.svg"  [ngClass]="{'active': isDropdownOpen === true }">{{name}} {{task.length}}</button>
   <ul class="dropdown-list-items" *ngIf="isDropdownOpen">
     <li class="task-list">
-      <app-task-card [tasks]="task"></app-task-card>
+      <app-task-card appHoverDebounce [tasks]="task"></app-task-card>
     </li>
   </ul>
 </div>

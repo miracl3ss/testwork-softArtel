@@ -1,0 +1,64 @@
+:host {
+    width: 100%;
+}
+
+.btn-container {
+    display: flex;
+    gap: 6px;
+    padding: 14px 26px;
+    width: 100%;
+    justify-content: center;
+}
+.fix {
+    background: rgba(var(--red_rgb), 5%);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--red_rgb), 10%);
+
+    & .btn-title {
+        color: var(--red);
+    }
+    &:hover {
+        background: rgba(var(--red_rgb), 20%);
+    }
+}
+.work {
+    background: rgba(var(--active_blue_rgb), 5%);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--active_blue_rgb), 10%);
+    flex-grow: 2;
+
+    & .btn-title {
+        color: var(--active_blue);
+    }
+    &:hover {
+        background: rgba(var(--active_blue_rgb), 20%);
+    }
+}
+.accept, .done {
+    background: rgba(var(--green_rgb), 5%);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--green_rgb), 10%);
+
+    & .btn-title {
+        color: var(--green);
+    }
+    &:hover {
+        background: rgba(var(--green_rgb), 20%);
+    }
+}
+.pause {
+    background: rgba(var(--text-secondary_rgb), 5%);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--text-secondary_rgb), 10%);
+
+    & .btn-title {
+        color: var(--text-secondary);
+    }
+    &:hover {
+        background: rgba(var(--text-secondary_rgb), 20%);
+    }
+}
+
+
+
+

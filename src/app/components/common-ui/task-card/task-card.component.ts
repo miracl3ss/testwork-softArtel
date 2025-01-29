@@ -1,13 +1,15 @@
-import { Component, Input, OnChanges, SimpleChanges, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnDestroy, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { BehaviorSubject, forkJoin, of, Subscription } from 'rxjs';
 import { SvgIconsService } from '../../../services/svg-icons.service';
 import { Task, taskDataService } from '../../../services/task-data.service';
 import { map, catchError, distinctUntilChanged, debounceTime, switchMap } from 'rxjs/operators';
 import { NgClass, NgFor } from '@angular/common';
+import { BtnTaskComponent } from "../btn-task/btn-task.component";
+import { HoverDebounceDirective } from '../../../appHoverDebounce.directive';
 
 @Component({
-  imports: [NgFor, NgClass],
+  imports: [NgFor, NgClass, BtnTaskComponent, HoverDebounceDirective],
   selector: 'app-task-card',
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.scss']
@@ -18,6 +20,21 @@ export class TaskCardComponent implements OnChanges, OnDestroy {
   svgCodes: { [taskId: string]: { [key: string]: SafeHtml | null } } = {};
   private tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
   private subscription: Subscription = new Subscription();
+
+  @ViewChild('taskFooter', {static: false}) taskFooterElement!: ElementRef;
+  @ViewChild('task', {static: false}) taskElement!: ElementRef;
+  @ViewChild('hiddenActions', {static: false}) hiddenActionsElement!: ElementRef;
+  @ViewChild('hiddenPath', {static: false}) hiddenPathElement!: ElementRef;
+  @ViewChild('taskHeader', {static: false}) taskHeaderElement!: ElementRef;
+  @ViewChild('hiddenActionsInWork', {static: false}) hiddenActionsInWorkElement!: ElementRef;
+  
+  ngAfterViewInit() {
+    console.log('task: ', this.taskElement);
+      console.log('taskhidden: ', this.hiddenActionsElement)
+      console.log('taskfooter: ', this.taskFooterElement)
+      console.log('taskheader: ', this.taskHeaderElement)
+      console.log('hiddenpath: ', this.hiddenPathElement)
+  }
 
   constructor(
     private svgIconService: SvgIconsService,
@@ -33,15 +50,9 @@ export class TaskCardComponent implements OnChanges, OnDestroy {
       )
       .subscribe();
   }
-
-  ngOnInit(): void {
-    // this.loadSvgCodes();
-    console.log(this.tasks)
-  }
-
+  
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tasks'] && changes['tasks'].currentValue) {
-      console.log('Tasks:', this.tasks);
       this.tasksSubject.next(this.tasks);
     }
   }
@@ -98,10 +109,10 @@ export class TaskCardComponent implements OnChanges, OnDestroy {
         };
         return acc;
       }, {} as { [taskId: string]: { [key: string]: SafeHtml | null } });
-      console.log(this.svgCodes)
       this.cdr.detectChanges();
     } catch (error) {
       console.error('Error loading SVG codes:', error);
     }
   }
+  
 }

@@ -1,3 +1,8 @@
+:host {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
 .task-header svg, .task-executor svg {
     fill: var(--text-secondary)
 }
@@ -5,3 +10,162 @@
 svg.active ~ svg {
     fill: var(--active_blue)
 }
+.task-actions, .task-actions-inwork {
+    display: flex;
+    gap: 12px
+}
+.none {
+    display: none;
+
+}
+.task-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 3px 10px 0 rgba($color: #263A5B, $alpha: 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+.task-header span {
+    display: flex;
+    gap: 6px;
+    color: var(--text-service);
+    align-items: center;
+    margin-bottom: 8px
+}
+.task-body {
+    display: grid;
+    grid-template-columns: 16px 1fr min-content;
+    align-items: start;
+    gap: 6px;
+    margin-bottom: 20px;
+    
+
+    & p {
+        color: var(--text-primary)
+    }
+    & .task-icon {
+        margin-top: 3px
+    }
+    & .task-id {
+        color: var(--text-secondary);
+    }
+}
+.task-footer {
+    display: flex;
+    flex-direction: column;
+
+    & .task-stages {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 6px;
+        
+        & hr {
+            width: 100%;
+            height: 2px;
+            &.work {
+                color: var(--active_blue);
+            }
+            &.pause {
+                color: var(--text-secondary);
+            }
+            &.wait {
+                color: var(--divider);
+            }
+            &.done {
+                color: var(--green)
+            }
+        }
+    }
+    & .task-executor {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 16px 1fr max-content;
+        align-items: center;
+        gap: 12px;
+
+        
+
+        & label {
+            display: flex;
+            gap: 4px;
+            color: var(--text-secondary);
+        }
+        & div {
+            display: grid;
+            grid-template-columns: 12px 1fr;
+            align-items: center;
+            gap: 3px;
+            & p {
+            color: var(--text-service)
+        }
+    }  
+    }
+}
+
+  .hide {
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: close 1s;
+    transition: opacity 0.5s, visibility 0.5s, transform 1s;
+    display: none;
+  }
+
+
+  .show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    animation: open;
+    animation-duration: 0.8s;
+    transition: opacity 0.5s, visibility 1s, transform 1s;
+    display: flex;
+  }
+  .task-path.show {
+    animation: openPath 1s;
+  }
+
+  @keyframes open {
+    0% {
+        transform: translateY(-100%);
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+        transform: translateY(0);
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @keyframes openPath {
+    0% {
+        transform: translateY(100%);
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+        transform: translateY(0);
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @keyframes close {
+    0% {
+        transform: translateY(0);
+      display: inherit;
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+        transform: translateY(-100%);
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }

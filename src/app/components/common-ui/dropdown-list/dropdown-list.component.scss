@@ -1,0 +1,20 @@
+.dropdown-list {
+    display: grid;
+    gap: 8px;
+    
+}
+
+.dropdown-button {
+    display: flex;
+    gap: 8px;
+    color: var(--text-text)
+}
+img.active {
+    transform: rotate(180deg);
+}
+
+.dropdown-list-items {
+    background-color: var(--bg_blocks);
+    padding: 12px;
+    border-radius: 8px;
+}

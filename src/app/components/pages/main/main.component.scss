@@ -17,6 +17,9 @@
 
 .left-column,
 .right-column {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     overflow-y: auto;
+    gap: 16px
 }

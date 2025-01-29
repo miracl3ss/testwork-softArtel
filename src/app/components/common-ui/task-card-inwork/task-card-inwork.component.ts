@@ -13,10 +13,6 @@ export class TaskCardInworkComponent {
   @Input({required: true}) tasks!: any;
   @Input() name: string = ''
   isDropdownOpen = false;
-  
-  ngOnInit(): void {
-    console.log(this.tasks)
-  }
 
   toggleDropdown(): void {
     this.isDropdownOpen =!this.isDropdownOpen;
